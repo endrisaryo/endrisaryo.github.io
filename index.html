@@ -15,7 +15,7 @@
     <title>My Portofolio | Endris</title>
     <style></style>
   </head>
-  <body id="home">
+  <body>
     <!-- NavBar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
       <div class="container">
@@ -47,10 +47,10 @@
     <!-- Akhir Navbar -->
 
     <!-- Jumbotrom -->
-    <section class="jumbotron text-center">
+    <section id="home" class="jumbotron text-center">
       <img src="img/endris.jpg" alt="Endri Saryo" width="160" class="rounded-circle" img-thumbnail />
       <h1 class="display-4">Endri Saryo</h1>
-      <p class="lead">Administrator | Web Development | Tutor Aplication</p>
+      <p class="lead">| Administrator | Web Development |</p>
 
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
@@ -171,19 +171,19 @@
             <form name="my-contacts-form">
               <div class="mb-3">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama" />
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama" required />
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email" name="email" />
+                <input type="email" class="form-control" id="email" aria-describedby="email" name="email" required />
               </div>
               <div class="mb-3">
                 <label for="pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="pesan" rows="3" name="pesan"></textarea>
+                <textarea class="form-control" id="pesan" rows="3" name="pesan" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
+              <button type="submit" class="btn btn-primary btn-kirim" style="margin-bottom: 30px">Kirim</button>
 
-              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+              <button class="btn btn-primary btn-loading d-none" type="button" style="margin-bottom: 30px" disabled>
                 <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                 <span role="status">Loading...</span>
               </button>
@@ -191,18 +191,18 @@
           </div>
         </div>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#0d6efd"
           fill-opacity="1"
           d="M0,160L48,154.7C96,149,192,139,288,149.3C384,160,480,192,576,202.7C672,213,768,203,864,186.7C960,171,1056,149,1152,149.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
         ></path>
-      </svg>
+      </svg> -->
     </section>
     <!-- Akhir Kontak -->
 
     <!-- Footer -->
-    <footer class="bg-primary text-white text-center pb-5">
+    <footer class="bg-primary text-white text-center py-2">
       <p>Created with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://www.instagram.com/endri.saryo/" class="text-white fw-bold">Endri Saryo</a></p>
     </footer>
     <!-- Akhir Footer -->
@@ -236,6 +236,33 @@
           })
           .catch((error) => console.error("Error!", error.message));
       });
+    </script>
+
+    <script>
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      function activateNav() {
+        let currentId = "";
+        const scrollMiddle = window.innerHeight / 2;
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= scrollMiddle && rect.bottom >= scrollMiddle) {
+            currentId = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${currentId}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", activateNav);
+      window.addEventListener("load", activateNav);
     </script>
   </body>
 </html>

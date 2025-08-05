@@ -3,10 +3,39 @@
   background-color: #e2edff;
 }
 
-#Projects {
+#Project {
   background-color: #e2edff;
 }
 
 section {
-  padding-top: 5rem;
+  scroll-snap-align: start;
+  /* padding-top: 5rem; */
+  min-height: 100vh;
+  padding-top: 100px; /* kalau pakai navbar fixed */
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 100px; /* biar scroll snap gak tertutup navbar */
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #fff !important;
+  border-bottom: 2px solid white;
+}
+
+/* footer {
+  overflow-x: hidden;
+  padding: 40px 20px 20px 20px;
+  text-align: center;
+} */
